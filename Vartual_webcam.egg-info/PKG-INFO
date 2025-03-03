@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: Vartual-webcam
+Version: 1.0
+Author: Arpan Chakraborty
+Author-email: arpanchakraborty500@gmail.com
+Requires-Dist: torch
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: python-dotenv
+Requires-Dist: opencv-python
+Requires-Dist: ultralytics
+Requires-Dist: pyvirtualcam

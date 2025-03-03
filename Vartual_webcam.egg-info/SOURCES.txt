@@ -1,0 +1,7 @@
+README.md
+setup.py
+Vartual_webcam.egg-info/PKG-INFO
+Vartual_webcam.egg-info/SOURCES.txt
+Vartual_webcam.egg-info/dependency_links.txt
+Vartual_webcam.egg-info/requires.txt
+Vartual_webcam.egg-info/top_level.txt

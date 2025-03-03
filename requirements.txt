@@ -1,0 +1,9 @@
+torch
+fastapi
+uvicorn
+python-dotenv
+opencv-python
+ultralytics
+pyvirtualcam
+
+-e .

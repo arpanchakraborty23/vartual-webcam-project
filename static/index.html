@@ -1,12 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vartual Web Camp</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            background: url('./background.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .container {
+            width: 70%;
+            max-width: 750px;
+            padding: 20px;
+            /* border-radius: 10px; */
+            background: url('./background.jpg') no-repeat center center;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5),
+                0 20px rgba(0, 0, 0, 0.2);
+
+            text-align: center;
+            position: relative;
+            border: 2px solid rgb(165, 21, 21);
+            background: linear-gradient(145deg, #0a0808, #2e2d2d);
+            border-radius: 20px;
+        }
+
+        .buttons,
+        .inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            margin: 20px 0;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #1c1a99;
+            color: whitesmoke;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(57, 19, 117, 0.2);
+            transition: 0.3s;
+        }
+
+        select,
+        input[typpe=range],
+        input[type=number] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: rgb(10, 10, 10);
+            box-shadow: 0 2px 5px rgba(13, 2, 31, 0.2);
+            background-color: white;
+
+
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        #logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 70px;
+            height: 60px;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: rgb(201, 61, 61);
+        }
+
+        #Background {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: rgb(3, 3, 3);
+            box-shadow: 0 2px 5px rgba(13, 2, 31, 0.2);
+        }
+    </style>
 </head>
+
 <body>
-   <h1>Now we are Live</h1>
-   <p>Hello Everyone let's start</p>
+    <img id="logo" src="./logo.jpg" alt="AC">
+    <div class="container">
+        <h1>Virtual Web Camp</h1>
+        <div class="controls">
+            <div class="buttons">
+                <button onclick="getDevices()">List Devices</button>
+                <button onclick="startStream()">Start Devices</button>
+                <button onclick="stopStream()">Stop Devices</button>
+            </div class="controls">
+            <div class="inputs">
+                <label for="Camera">Camera</label>
+                <select id="Camera"></select>
+
+                <label for="FPS">FPS</label>
+                <input id="FPS" type="number" min="1" max="60" value="15">
+
+                <label for="Blur">Blur Strength (odd)</label>
+                <input id="Blur" type="range" min="1" max="50" value="30">
+
+                <label for="Background">Background</label>
+                <select id="Background">
+                    <option value="Defult">Defult</option>
+                    <option value="Blur">Blur</option>
+                    <option value="None">Custom</option>
+                </select>
+
+            </div>
+        </div>
+        <div id="status">Status : Wating ...</div>
+    </div>
+    <script>
+        function getDevices() {
+            fetch('/devices')
+                .then(Response => response.json())
+                .then(data => {
+                    const select = document.getElementById('Camera');
+                    select.innerHTML = '';
+                    data.forEach(device => {
+                        select.innerHTML += `<option value ="${device.id}">${device.name}</option>`;
+                    });
+
+
+                });
+        }
+    </script>
 </body>
+
 </html>
